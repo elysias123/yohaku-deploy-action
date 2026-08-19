@@ -6,7 +6,7 @@ on:
       source_ref:
         description: 源码分支或 commit
         required: true
-        default: cursor/fix-rich-content-next-resolve-2170
+        default: cursor/materialize-oss-package-symlinks-32a7
   push:
     branches:
       - main
@@ -23,7 +23,7 @@ concurrency:
 env:
   HASH_FILE: build_hash
   SOURCE_REPO: innei-dev/Yohaku
-  SOURCE_REF: ${{ inputs.source_ref || 'cursor/fix-rich-content-next-resolve-2170' }}
+  SOURCE_REF: ${{ inputs.source_ref || 'cursor/materialize-oss-package-symlinks-32a7' }}
   BUILD_COMMAND: pnpm --filter @yohaku/web build:ci
   STANDALONE_SUBPATH: standalone/apps/web
 
@@ -101,6 +101,8 @@ jobs:
 
       - name: Checkout LFS objects
         run: git lfs checkout
+      - name: Materialize OSS workspace packages
+        run: sh scripts/materialize-oss-workspace-packages.sh
       - uses: pnpm/action-setup@v2
 
       - name: Use Node.js ${{ matrix.node-version }}
