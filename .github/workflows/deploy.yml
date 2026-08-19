@@ -200,7 +200,7 @@ jobs:
           script: |
             set -e
             source $HOME/.bashrc
-            basedir=$HOME/yohaku
+            basedir=/www/wwwroot/blog.heinu.cc
             workdir=$basedir/${{ github.run_number }}
             mkdir -p $workdir
             mkdir -p $basedir/.cache
