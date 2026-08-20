@@ -104,6 +104,8 @@ jobs:
       - name: Materialize OSS workspace packages
         run: sh scripts/materialize-oss-workspace-packages.sh
       - uses: pnpm/action-setup@v2
+        with:
+          version: 10
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
