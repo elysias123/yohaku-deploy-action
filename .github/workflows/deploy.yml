@@ -220,7 +220,7 @@ jobs:
             unzip -qq -o $workdir/release.zip
             rm -r /tmp/yohaku
             rm -rf $workdir/${{ env.STANDALONE_SUBPATH }}/.env
-            ln -s $HOME/yohaku/.env $workdir/${{ env.STANDALONE_SUBPATH }}/.env
+            ln -s $basedir/.env $workdir/${{ env.STANDALONE_SUBPATH }}/.env
             export NEXT_SHARP_PATH=$(npm root -g)/sharp
             # https://github.com/Unitech/pm2/issues/3054
             # symlink workdir node entry file to basedir
