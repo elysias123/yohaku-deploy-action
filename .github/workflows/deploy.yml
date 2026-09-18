@@ -6,7 +6,7 @@ on:
       source_ref:
         description: 源码分支或 commit
         required: true
-        default: cursor/materialize-oss-package-symlinks-32a7
+        default: main
   push:
     branches:
       - main
@@ -23,7 +23,7 @@ concurrency:
 env:
   HASH_FILE: build_hash
   SOURCE_REPO: innei-dev/Yohaku
-  SOURCE_REF: ${{ inputs.source_ref || 'cursor/materialize-oss-package-symlinks-32a7' }}
+  SOURCE_REF: ${{ inputs.source_ref || 'main' }}
   BUILD_COMMAND: pnpm --filter @yohaku/web build:ci
   STANDALONE_SUBPATH: standalone/apps/web
 
@@ -210,7 +210,7 @@ jobs:
           script: |
             set -e
             source $HOME/.bashrc
-            basedir=/www/wwwroot/blog.heinu.cc
+            basedir=$HOME/yohaku
             workdir=$basedir/${{ github.run_number }}
             mkdir -p $workdir
             mkdir -p $basedir/.cache
