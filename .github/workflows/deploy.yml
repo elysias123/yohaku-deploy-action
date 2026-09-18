@@ -157,6 +157,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: Checkout deployment config
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
       # - name: Download artifact
       #   uses: actions/download-artifact@v4
       #   with:
